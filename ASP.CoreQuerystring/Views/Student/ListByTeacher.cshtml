@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Student>
+
+<h2>Students for Teacher ID: @ViewBag.TeacherId</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Teacher" asp-action="Index">Back to Teachers</a>
