@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Student>
+
+<h2>Student List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Pagination -->
+<div>
+    Page @ViewBag.CurrentPage of @ViewBag.TotalPages
+</div>
+
+<nav>
+    <ul class="pagination">
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+            </li>
+        }
+    </ul>
+</nav>
